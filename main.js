@@ -4,6 +4,9 @@ const path = require("path");
 
 const {app, BrowserWindow, Menu, ipcMain} = electron;
 
+// Set environment to development or production
+process.env.NODE_ENV = "production";
+
 let mainWindow;
 let addWindow;
 
@@ -52,6 +55,8 @@ function createAddWindow(){
 	addWindow.on("close", function(){
 		addWindow = null;
 	});
+
+	addWindow.setMenu(null);
 }
 
 // Catch item:add
